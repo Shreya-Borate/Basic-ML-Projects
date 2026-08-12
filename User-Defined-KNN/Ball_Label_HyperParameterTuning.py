@@ -186,7 +186,7 @@ def HyperParameterTuning():
             BestK = k
 
     print(border)
-    print("Best K Value :", BestK)
+    print("Best K value :", BestK)
     print("Best Accuracy :", BestAccuracy, "%")
     print(border)
 
