@@ -128,6 +128,8 @@ def Eda(df):
     print("Dropping English column from Dataset")
 
     df.drop('English', axis=1, inplace = True)
+    print(df)
+    print("Successfully completed !")
 
 
 
