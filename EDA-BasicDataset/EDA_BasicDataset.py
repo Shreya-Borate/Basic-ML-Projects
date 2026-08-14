@@ -121,8 +121,15 @@ def Eda(df):
     df2['Science'] = df2['Science'].fillna(df2['Science'].mean())
     print("Dataset after Filling Missing Values : ")
     print(df2)
+    print()
 
     #Drop English column from Original dataset
+    print(Border)
+    print("Dropping English column from Dataset")
+
+    df.drop('English', axis=1, inplace = True)
+
+
 
 
 
