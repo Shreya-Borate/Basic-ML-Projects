@@ -100,27 +100,7 @@ def Eda(df):
     print()
 
     #Create another dataset with missing values and fill them with column mean
-    print(Border)
-    print("11. Dataset with Missing Values")
-
-    Data2 = {
-        'Name': ['Amit', 'Sagar', 'Pooja'],
-        'Math': [np.nan, 76, 88],
-        'Science': [91, np.nan, 85]
-    }
-    df2 = pd.DataFrame(Data2)
-
-    print("DataSet: 2 Before filling missing values")
-    print(df2)
-    print()
-
-    print("Missing values : ")
-    print(df2.isnull().sum())
-
-    df2['Math'] = df2['Math'].fillna(df2['Math'].mean())
-    df2['Science'] = df2['Science'].fillna(df2['Science'].mean())
-    print("Dataset after Filling Missing Values : ")
-    print(df2)
+    
 
     #Drop English column from Original dataset
 
