@@ -90,8 +90,12 @@ def AEDA(df):
 
     print("Pie Chart plotted successfully")
 
-    #
-
+    #export final dataFrame to CSV
+    print(Border)
+    print("8. Exporting final DataFrame to CSV")
+    df.to_csv("FinalDataset.csv",index=False)
+    print("DataFrame exported successfully")
+ 
 
 ############################################################
 # Main Program
