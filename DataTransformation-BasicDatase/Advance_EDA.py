@@ -26,11 +26,10 @@ from sklearn.preprocessing import MinMaxScaler
 #                 about data
 ############################################################
 def AEDA(df):
-    # Normalize data using Min-Max Scaling
 
     #Add New column to Data set Gender
     print(Border)
-    print("2. Adding new column to dataset : Gender")
+    print("1. Adding new column to dataset : Gender")
     df['Gender'] = ['Male','Male','Female']
     print("Gender column added successfully")
     print(df)
@@ -38,7 +37,7 @@ def AEDA(df):
 
     #group students by gender and calculate avg marks
     print(Border)
-    print("4. Group students by gender and calculate avg marks")
+    print("2. Group students by gender and calculate avg marks")
     df['Total'] = df['Math'] + df['Science'] + df['English']
     print("Average marks by Gender : ")
     print(df.groupby('Gender')['Total'].mean())
@@ -46,30 +45,15 @@ def AEDA(df):
 
     # Add new column Status where total >250 ->Pass else ->Fail
     print(Border)
-    print("6.Adding new column to dataset : Status")
+    print("3.Adding new column to dataset : Status")
     df['Status'] = np.where(df['Total'] > 250, 'Pass', 'Fail')
     print("Status column added successfully")
     print(df)
 
     #Print Number of Pass
     print(Border)
-    print("7. Number of student pass : ",(df['Status'] == 'Pass').sum())
+    print("4. Number of student pass : ",(df['Status'] == 'Pass').sum())
 
-
-
-    print(Border)
-    print("1.Normalizing data using Min-Max Scaling")
-    scaler = MinMaxScaler()
-    df[['Math']] = scaler.fit_transform(df[['Math']])
-    print("Data normalized successfully")
-    print(df)
-
-    #Perform One-Hot Encoding on Gender Column
-    print(Border)
-    print("3. Performing One-Hot Encoding on Column : Gender")
-    df = pd.get_dummies(df, columns=['Gender'], dtype=int)
-    print("One-Hot Encoding performed successfully")
-    print(df)
 
     #Pie Chart of Marks of Sagar Acc to Subjects
     print(Border)
@@ -90,9 +74,39 @@ def AEDA(df):
 
     print("Pie Chart plotted successfully")
 
+    #Histogram of Maths Marks
+    print(Border)
+    print("6. Histogram of Maths Marks")
+
+    plt.hist(df['Math'],bins=5)
+    plt.xlabel("Maths Marks")
+    plt.ylabel("Number os Students")
+    plt.title("Histogram of Math Marks")
+    plt.show()
+
+    print("Histogram plotted successfully")
+
+
+    # Normalize data using Min-Max Scaling
+    print(Border)
+    print("1.Normalizing data using Min-Max Scaling")
+    scaler = MinMaxScaler()
+    df[['Math']] = scaler.fit_transform(df[['Math']])
+    print("Data normalized successfully")
+    print(df)
+
+    #Perform One-Hot Encoding on Gender Column
+    print(Border)
+    print("6. Performing One-Hot Encoding on Column : Gender")
+    df = pd.get_dummies(df, columns=['Gender'], dtype=int)
+    print("One-Hot Encoding performed successfully")
+    print(df)
+
+
+
     #export final dataFrame to CSV
     print(Border)
-    print("8. Exporting final DataFrame to CSV")
+    print("7. Exporting final DataFrame to CSV")
     df.to_csv("FinalDataset.csv",index=False)
     print("DataFrame exported successfully")
  
