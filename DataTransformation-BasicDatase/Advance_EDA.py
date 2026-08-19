@@ -25,13 +25,6 @@ from sklearn.preprocessing import MinMaxScaler
 ############################################################
 def AEDA(df):
     # Normalize data using Min-Max Scaling
-    print(Border)
-    print("1.Normalizing data using Min-Max Scaling")
-
-    scaler = MinMaxScaler()
-    df[['Math']] = scaler.fit_transform(df[['Math']])
-    print("Data normalized successfully")
-    print(df)
 
     #Add New column to Data set Gender
     print(Border)
@@ -41,6 +34,27 @@ def AEDA(df):
     print(df)
 
 
+    #group students by gender and calculate avg marks
+    print(Border)
+    print("4. Group students by gender and calculate avg marks")
+    df['Total'] = df['Math'] + df['Science'] + df['English']
+    print("Average marks by Gender : ")
+    print(df.groupby('Gender')['Total'].mean())
+
+    print(Border)
+    print("1.Normalizing data using Min-Max Scaling")
+
+    scaler = MinMaxScaler()
+    df[['Math']] = scaler.fit_transform(df[['Math']])
+    print("Data normalized successfully")
+    print(df)
+
+    #Perform One-Hot Encoding on Gender Column
+    print(Border)
+    print("3. Performing One-Hot Encoding on Column : Gender")
+    df = pd.get_dummies(df, columns=['Gender'], dtype=int)
+    print("One-Hot Encoding performed successfully")
+    print(df)
 
 ############################################################
 # Main Program
