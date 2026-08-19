@@ -86,12 +86,29 @@ def AEDA(df):
 
     print("Histogram plotted successfully")
 
+    #Rename Math column to Mathematics
+    print(Border)
+    print("7. Rename Math column to Mathematics")
+    df.rename(columns={'Math' : 'Mathematics'},inplace = 'True')
+    print("Column renamed successfully")
+    print(df)
+
+    #boxplot of English subject
+    print(Border)
+    print("8. Blox plot of English to check distribution and outliers")
+    plt.boxplot(df['English'])
+    plt.ylabel("English marks")
+    plt.title("boxplot of English Marks")
+    plt.show()
+
+    print("Box Plot plotted successfully")
+
 
     # Normalize data using Min-Max Scaling
     print(Border)
     print("1.Normalizing data using Min-Max Scaling")
     scaler = MinMaxScaler()
-    df[['Math']] = scaler.fit_transform(df[['Math']])
+    df[['Mathematics']] = scaler.fit_transform(df[['Mathematics']])
     print("Data normalized successfully")
     print(df)
 
