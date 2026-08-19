@@ -14,6 +14,8 @@ subborder = "*"*50
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+
 from sklearn.preprocessing import MinMaxScaler
 
 
@@ -41,9 +43,22 @@ def AEDA(df):
     print("Average marks by Gender : ")
     print(df.groupby('Gender')['Total'].mean())
 
+
+    # Add new column Status where total >250 ->Pass else ->Fail
+    print(Border)
+    print("6.Adding new column to dataset : Status")
+    df['Status'] = np.where(df['Total'] > 250, 'Pass', 'Fail')
+    print("Status column added successfully")
+    print(df)
+
+    #Print Number of Pass
+    print(Border)
+    print("7. Number of student pass : ",(df['Status'] == 'Pass').sum())
+
+
+
     print(Border)
     print("1.Normalizing data using Min-Max Scaling")
-
     scaler = MinMaxScaler()
     df[['Math']] = scaler.fit_transform(df[['Math']])
     print("Data normalized successfully")
@@ -55,6 +70,28 @@ def AEDA(df):
     df = pd.get_dummies(df, columns=['Gender'], dtype=int)
     print("One-Hot Encoding performed successfully")
     print(df)
+
+    #Pie Chart of Marks of Sagar Acc to Subjects
+    print(Border)
+    print("5. Pie Chart of Sagar's Marks")
+
+    Sagar = df[df['Name'] == 'Sagar']
+    subjects = ['Math','Science','English']
+
+    Marks = [
+        Sagar['Math'].values[0],
+        Sagar['Science'].values[0],
+        Sagar['English'].values[0]
+
+    ]
+    plt.pie(Marks, labels=subjects, autopct='%1.1f%%')
+    plt.title("Sagar's Marks According to Subjects")
+    plt.show()
+
+    print("Pie Chart plotted successfully")
+
+    #
+
 
 ############################################################
 # Main Program
