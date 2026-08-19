@@ -26,13 +26,19 @@ from sklearn.preprocessing import MinMaxScaler
 def AEDA(df):
     # Normalize data using Min-Max Scaling
     print(Border)
-    print("Normalizing data using Min-Max Scaling")
+    print("1.Normalizing data using Min-Max Scaling")
 
     scaler = MinMaxScaler()
     df[['Math']] = scaler.fit_transform(df[['Math']])
     print("Data normalized successfully")
     print(df)
 
+    #Add New column to Data set Gender
+    print(Border)
+    print("2. Adding new column to dataset : Gender")
+    df['Gender'] = ['Male','Male','Female']
+    print("Gender column added successfully")
+    print(df)
 
 
 
